@@ -1,0 +1,42 @@
+<nav class="main-nav">
+  <!-- Left: Logo -->
+  <div class="nav-left">
+    <div class="nav-logo">
+      <a href="/listings"><i class="fa-brands fa-airbnb"></i> RestEasy</a>
+    </div>
+  </div>
+
+  <!-- Center: Links -->
+  <div class="nav-center">
+    <a href="/listings" class="active">
+      <i class="fa-solid fa-house"></i>
+      <span>Homes</span>
+    </a>
+    <a href="#">
+      <i class="fa-solid fa-person-hiking"></i>
+      <span>Experiences</span>
+      <span class="new-badge">NEW</span>
+    </a>
+    <a href="#">
+      <i class="fa-solid fa-bell-concierge"></i>
+      <span>Services</span>
+      <span class="new-badge">NEW</span>
+    </a>
+  </div>
+
+  <!-- Right: User Actions -->
+  <div class="nav-right">
+    <% if (currentUser) { %>
+      <!-- Wishlist: only visible when logged in -->
+      <a href="/wishlist" class="wishlist-link" title="Wishlist">
+        <i class="fa-regular fa-heart"></i>
+      </a>
+      <a href="/logout" class="user-menu"> logout </a>
+    <% } else { %>
+      <a href="/signup" class="lang-link"> signup </a>
+      <a href="/login" class="user-menu"> login </a>
+    <% } %>
+
+    <a href="/listings/new" class="host-link">Become a host</a>
+  </div>
+</nav>

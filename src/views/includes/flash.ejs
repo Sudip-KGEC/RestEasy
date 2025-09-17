@@ -1,0 +1,21 @@
+<% if(success && success.length) { %>
+<div class="flash flash-success" role="alert">
+  <span><%= success %></span>
+  <button
+    class="flash-close-btn"
+    onclick="this.parentElement.style.display='none'"
+  >
+    &times;
+  </button>
+</div>
+<% } %> <% if(error && error.length) { %>
+<div class="flash flash-error" role="alert">
+  <span><%= error %></span>
+  <button
+    class="flash-close-btn"
+    onclick="this.parentElement.style.display='none'"
+  >
+    &times;
+  </button>
+</div>
+<% } %>

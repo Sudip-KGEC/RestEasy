@@ -1,0 +1,74 @@
+<% layout('layout') -%>
+ <form action="/listings/search" method="GET" class="search-bar-container">
+    <div class="search-bar">
+        <div class="search-bar-item">
+            <label for="destination">Where</label>
+            <input 
+                type="text" 
+                id="destination"
+                name="q" 
+                placeholder="Search destinations"
+                class="search-input"
+            >
+        </div>
+        <div class="search-bar-item">
+            <label>Check in</label>
+            <span>Add dates</span>
+        </div>
+        <div class="search-bar-item">
+            <label>Check out</label>
+            <span>Add dates</span>
+        </div>
+        <div class="search-bar-item">
+            <label>Who</label>
+            <span>Add guests</span>
+        </div>
+        <button type="submit" class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
+</form>
+
+
+
+<hr>
+
+<h3>Search Results for: "<i><%= query %></i>"</h3>
+
+<% if (listings.length > 0) { %>
+    <p class="text-muted"><%= listings.length %> listings found.</p>
+    
+    <div class="listings-grid">
+        <% for(let listing of listings) { %>
+            <a href="/listings/<%= listing._id %>" class="listing-card-v2">
+                <div class="card-image-container-v2">
+                    <img src="<%= listing.image.url %>" class="card-image-v2" alt="listing_image">
+                    <div class="guest-favourite-badge">
+                        <i class="fa-solid fa-award"></i> Guest favourite
+                    </div>
+                    <button class="favourite-btn"><i class="fa-regular fa-heart"></i></button>
+                </div>
+                <div class="card-info">
+                    <div class="card-info-top">
+                        <b><%= listing.location %>, <%= listing.country %></b>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i> 4.93 </div>
+                    </div>
+                    <p class="text-muted"><%= listing.title %></p>
+                    <p class="price"><b>&#8377; <%= listing.price.toLocaleString("en-IN") %></b> for 2 nights</p>
+                </div>
+            </a>
+        <% } %>
+    </div>
+
+<% } else { %>
+    <div class="notice-container">
+        <div class="notice-box notice-warning">
+            <p><b>No listings found for your search "<%= query %>".</b></p>
+            <p>Please try a different location or keyword, or go back to the main page.</p>
+            <a href="/listings" class="btn btn-dark">Back to All Listings</a>
+        </div>
+    </div>
+<% } %>
+
+<script src="/js/suggestions.js"></script>
